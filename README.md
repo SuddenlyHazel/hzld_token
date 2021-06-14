@@ -1,5 +1,10 @@
 # hzld_token
 
+# Notice
+
+The hzld token API shape should be considered unstable. Please follow us here : https://discord.gg/PGHyNX7qFB
+to receive updates. 
+
 ## Motoko Example
 
 https://ic.rocks/principal/qz7gu-giaaa-aaaaf-qaaka-cai
