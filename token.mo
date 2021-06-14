@@ -39,30 +39,6 @@ shared({ caller = owner }) actor class Token() = this {
         #InsufficientBalance;
     }>;
 
-    type OperatorAction = {
-        #setOperator;
-        #removeOperator;
-    };
-
-    type OperatorRequest = {
-        owner: User;
-        operators: [(User, OperatorAction)];
-    };
-
-    type OperatorResponse = Result.Result<(), {
-        #Unauthorized;
-        #InvalidOwner: User;
-    }>;
-
-    // Request and responses for isAuthorized
-    type IsAuthorizedRequest = {
-        owner: User;
-        operator: User;
-        amount: Balance;
-    };
-
-    type IsAuthorizedResponse = [Bool];
-
     // Utility functions for User and TokenId, useful when implementing containers
     module User = {
         public let equal = Principal.equal;
@@ -75,7 +51,7 @@ shared({ caller = owner }) actor class Token() = this {
     public shared func getNumberOfAccounts() : async Nat {
         balances.size();
     };
-
+    
     public shared func getBalance(request: BalanceRequest) : async ?Balance {
         switch(balances.get(request.user)) {
                 case(?v) {
